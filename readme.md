@@ -7,7 +7,7 @@ Features
 Available on iOS and Android
 
 Description
-No curso iremos desenvolver uma aplicação chamada Simple MOOC, que é uma plataforma de ensino a distância, vamos desde a criação do projeto, definição das interfaces e arquitetura do projeto até o deploy da aplicação na nuvem.
+No curso iremos desenvolver uma aplicação chamada Simple MOOC, que é uma plataforma de ensino a distância, vamos desde à criação do projeto, definição das interfaces e arquitetura do projeto até o deploy da aplicação na nuvem.
 
 Este curso é a versão gratuita de um curso anterior meu, enquanto eu planejo e gravo as aulas do próximo curso.
 
