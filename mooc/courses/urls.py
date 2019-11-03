@@ -14,11 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, re_path
-from mooc.courses.views import index, details
+from mooc.courses.views import index, details, enrollment, undo_enrollment, announcements
 
 app_name = 'courses'
 urlpatterns = [
-	path('', index, name='index'),
-	# path('<int:pk>', details, name='details'),
-	re_path(r'(?P<slug>[\w_-]+)/$', details, name='details'),
+    path('', index, name='index'),
+    # path('<int:pk>', details, name='details'),
+    re_path(r'^(?P<slug>[\w_-]+)/$', details, name='details'),
+    re_path(r'^(?P<slug>[\w_-]+)/inscricao/$', enrollment, name='enrollment'),
+    re_path(r'^(?P<slug>[\w_-]+)/cancelar-inscricao/$', undo_enrollment, name='undo_enrollment'),
+    re_path(r'^(?P<slug>[\w_-]+)/anuncios/$', announcements, name='announcements'),
 ]

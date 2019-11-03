@@ -13,23 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, include
+from mooc.accounts import urls as accounts_urls
 from mooc.core import urls as core_urls
 from mooc.courses import urls as courses_urls
-from mooc.accounts import urls as accounts_urls
 
 urlpatterns = [
-	path('', include((core_urls, 'core'),
-		namespace='core')),
-	path(r'cursos/', include((courses_urls, 'courses'),
-		namespace='courses')),
-    path('conta/', include((accounts_urls, 'accounts'),
-        namespace='accounts')),
+    path('', include((core_urls, 'core'), namespace='core')),
+    path(r'cursos/', include( (courses_urls, 'courses'), namespace='courses')),
+    path(r'conta/', include( (accounts_urls, 'accounts'), namespace='accounts')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
