@@ -23,6 +23,7 @@ What you’ll learn
 <li>Saber o básico do funcionamento da Web (html, css e javascript)</li>
 <li>Conhecer o básico de Python (sintaxe, classes...)</li>
 <li>Familiaridade com Terminal (Linux/Mac) ou Prompt de Comando (Windows)</li>
+</ol>
 
 Who this course is for:
 Quem desejar desenvolver aplicações web de forma rápida aprender a arquitetura de aplicações web com Python. O curso não ensina html, css ou javascript, mas todo o código do layout da aplicação é disponibilizado.
