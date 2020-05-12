@@ -1,4 +1,1 @@
-web: gunicorn mooc.wsgi:application --log-file - --log-level debug
-python manage.py collectstatic --noinput
-python manage.py makemigrations
-python manage.py migrate --ru-syncbd
+web: gunicorn mooc.wsgi
