@@ -143,7 +143,7 @@ LOGIN_REDIRECT_URL = 'core:home'
 LOGOUT_URL = 'accounts:logout'
 AUTH_USER_MODEL = 'accounts.User'
 
-import django_heroku
+import django_hqeroku
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 # Heroku settings
