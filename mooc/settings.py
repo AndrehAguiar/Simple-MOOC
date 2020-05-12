@@ -61,7 +61,7 @@ MIDDLEWARE_CLASSES = (
     # https://warehouse.python.org/project/whitenoise/
     'whitenoise.middleware.WhiteNoiseMiddleware',
 )
-ROOT_URLCONF = '{{ mooc }}.urls'
+ROOT_URLCONF = 'mooc.urls'
 
 TEMPLATES = [
     {
@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = '{{ mooc }}.wsgi.application'
+WSGI_APPLICATION = 'mooc.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
