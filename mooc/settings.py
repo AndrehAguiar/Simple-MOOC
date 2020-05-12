@@ -143,14 +143,12 @@ LOGIN_REDIRECT_URL = 'core:home'
 LOGOUT_URL = 'accounts:logout'
 AUTH_USER_MODEL = 'accounts.User'
 
-import django_hqeroku
-# Activate Django-Heroku.
-django_heroku.settings(locals())
-# Heroku settings
-import dj_database_url
 import django_heroku
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+# Heroku settings
+import dj_database_url
 
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
