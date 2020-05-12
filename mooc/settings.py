@@ -24,7 +24,7 @@ SECRET_KEY = '!-+st@+m#tkiq%tqgrc@zxfyjw@ku+g6+yt@_h8)o$v_9dm$p7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver']
+ALLOWED_HOSTS = ['https://top-mooc-courses.herokuapp.com/', '127.0.0.1', 'localhost', 'testserver']
 
 # Application definition
 
@@ -50,11 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-MIDDLEWARE_CLASSES = (
-    # Simplified static file serving.
-    # https://warehouse.python.org/project/whitenoise/
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-)
+
 ROOT_URLCONF = 'mooc.urls'
 
 TEMPLATES = [
@@ -77,14 +73,13 @@ WSGI_APPLICATION = 'mooc.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}"""
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -143,9 +138,6 @@ AUTH_USER_MODEL = 'accounts.User'
 
 # Heroku settings
 import dj_database_url
-import django_heroku
-# Activate Django-Heroku.
-django_heroku.settings(locals())
 
 DATABASES['default'] = dj_database_url.config()
 
@@ -153,13 +145,13 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
