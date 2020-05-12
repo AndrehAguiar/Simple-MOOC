@@ -12,7 +12,11 @@
 	<div class="pure-u-1">
 		<ul class="breadcrumb">
 			{% block breadcrumb %}
-			<li><a href="{% url 'accounts:dashboard' %}">Meu Painel</a></li>
+			<li>
+				<a href="{% url 'accounts:dashboard' %}">
+					Meu Painel
+				</a>
+			</li>
 			{% endblock %}
 		</ul>
 	</div>
@@ -20,17 +24,19 @@
 		<div class="pure-menu pure-menu-open">
 			<ul>
 				<li class="pure-menu-heading">
-					<b>Bem-vindo,</b><br /><i class="fa fa-user"> </i> {{ user }}
+					<b>Bem-vindo,</b><br />
+					<i class="fa fa-user"> </i> &nbsp;
+					{{ user }}
 				</li>
                 {% block menu_options %}
 				<li class="pure-menu-heading">
-					<i class="fa fa-bookmark"></i>
-					<b> Cursos</b>
+					<i class="fa fa-bookmark"> </i> &nbsp;
+					<b>Cursos</b>
 				</li>
 				{% for enrollment in enrollments %}
 					<li class="pure-menu-heading">
 						<a href="{% url 'courses:announcements' enrollment.course.slug %}">
-							<i class="fa fa-book"> </i>
+							<i class="fa fa-book"> </i> &nbsp;
 							{{ enrollment.course }}
 						</a>
 					</li>
@@ -42,14 +48,14 @@
 				</li>
 				<li>
 					<a href="{% url 'accounts:edit' %}">
-						<i class="fa fa-cog"></i>
+						<i class="fa fa-cog"> </i> &nbsp;
 						<b>Editar Conta</b>
 					</a>
 				</li>
 				<li>
 					<a href="{% url 'accounts:edit_password' %}">
-						<i class="fa fa-lock"></i>
-					<b>Editar Senha</b></a>
+						<i class="fa fa-lock"> </i> &nbsp;
+					<b> Editar Senha</b></a>
 				</li>
                 {% endblock %}
 			</ul>

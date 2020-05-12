@@ -9,10 +9,16 @@ from django.db import models
 
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
-        'Nome de Usuário', max_length=30,
-        unique=True, validators=[validators.RegexValidator(
-            re.compile(r'^[\w.@+-]+$'),
-            'O nome de usuário só pode conter letras, números e @/./+/-/_', 'invalid')]
+        'Nome de Usuário',
+        max_length=30,
+        unique=True,
+        validators=[
+            validators.RegexValidator(
+                re.compile(r'^[\w.@+-]+$'),
+                'O nome de usuário só pode conter letras, números e @/./+/-/_',
+                'invalid'
+            )
+        ]
     )
     email = models.EmailField(
         'E-mail',

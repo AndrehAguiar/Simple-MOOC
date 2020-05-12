@@ -227,6 +227,9 @@ table.full {
 .button-secondary {
     background: rgb(66, 184, 221); /* this is a light blue */
 }
+.button-right{
+    float: right
+}
 body {
     min-width: 320px;
     color: #777;

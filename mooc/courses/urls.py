@@ -14,14 +14,37 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, re_path
-from mooc.courses.views import index, details, enrollment, undo_enrollment, announcements
+from mooc.courses.views import index, details, enrollment, undo_enrollment, announcements, show_announcement, lessons, \
+    lesson, material
 
 app_name = 'courses'
 urlpatterns = [
-    path('', index, name='index'),
+    path(r'',
+         index,
+         name='index'),
     # path('<int:pk>', details, name='details'),
-    re_path(r'^(?P<slug>[\w_-]+)/$', details, name='details'),
-    re_path(r'^(?P<slug>[\w_-]+)/inscricao/$', enrollment, name='enrollment'),
-    re_path(r'^(?P<slug>[\w_-]+)/cancelar-inscricao/$', undo_enrollment, name='undo_enrollment'),
-    re_path(r'^(?P<slug>[\w_-]+)/anuncios/$', announcements, name='announcements'),
+    re_path(r'^(?P<slug>[\w_-]+)/$',
+            details,
+            name='details'),
+    re_path(r'^(?P<slug>[\w_-]+)/inscricao/$',
+            enrollment,
+            name='enrollment'),
+    re_path(r'^(?P<slug>[\w_-]+)/cancelar-inscricao/$',
+            undo_enrollment,
+            name='undo_enrollment'),
+    re_path(r'^(?P<slug>[\w_-]+)/anuncios/$',
+            announcements,
+            name='announcements'),
+    re_path(r'^(?P<slug>[\w_-]+)/anuncios/(?P<pk>\d+)/$',
+            show_announcement,
+            name='show_announcement'),
+    re_path(r'^(?P<slug>[\w_-]+)/aulas/$',
+            lessons,
+            name='lessons'),
+    re_path(r'^(?P<slug>[\w_-]+)/aulas/(?P<pk>\d+)/$',
+            lesson,
+            name='lesson'),
+    re_path(r'^(?P<slug>[\w_-]+)/materiais/(?P<pk>\d+)/$',
+            material,
+            name='material'),
 ]
