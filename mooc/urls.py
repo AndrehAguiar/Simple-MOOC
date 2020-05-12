@@ -22,10 +22,23 @@ from mooc.core import urls as core_urls
 from mooc.courses import urls as courses_urls
 
 urlpatterns = [
-    path('', include((core_urls, 'core'), namespace='core')),
-    path(r'cursos/', include( (courses_urls, 'courses'), namespace='courses')),
-    path(r'conta/', include( (accounts_urls, 'accounts'), namespace='accounts')),
-    path('admin/', admin.site.urls),
+    path(r'',
+         include(
+             (core_urls, 'core'),
+             namespace='core')
+         ),
+    path(r'cursos/',
+         include(
+             (courses_urls, 'courses'),
+             namespace='courses')
+         ),
+    path(r'conta/',
+         include(
+             (accounts_urls, 'accounts'),
+             namespace='accounts')
+         ),
+    path(r'admin/',
+         admin.site.urls),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

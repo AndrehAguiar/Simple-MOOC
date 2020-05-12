@@ -1,6 +1,14 @@
-<li class="pure-menu-heading">Meus Cursos</li>
+<li class="pure-menu-heading">
+    Meus Cursos
+</li>
 {% for enrollment in enrollments %}
-<li class="pure-menu-heading"><a href="#">{{ enrollment.course }}</a></li>
+<li class="pure-menu-heading">
+    <a href="#">
+        {{ enrollment.course }}
+    </a>
+</li>
 {% empty %}
-<li class="pure-menu-heading">Nenhum curso encontrado</li>
+<li class="pure-menu-heading">
+    Nenhum curso encontrado
+</li>
 {% endfor %}

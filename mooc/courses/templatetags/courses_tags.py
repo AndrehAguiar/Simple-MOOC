@@ -1,5 +1,6 @@
 from django.template import Library
 from mooc.courses.models import Enrollment
+
 register = Library()
 
 
@@ -7,7 +8,7 @@ register = Library()
 def my_course(user):
     enrollments = Enrollment.objects.filter(user=user)
     context = {
-        'enrollments':enrollments
+        'enrollments': enrollments
     }
     return context
 

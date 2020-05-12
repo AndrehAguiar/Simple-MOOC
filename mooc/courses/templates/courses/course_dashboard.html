@@ -11,26 +11,26 @@
 <li class="pure-menu-heading">
     {{ course }}
 <li>
-    <a href="#">
-        <i class="fa fa-video-camera"></i>
+    <a href="{% url 'courses:lessons' course.slug %}">
+        <i class="fa fa-video-camera"> </i> &nbsp;
         Aulas e Materiais
     </a>
 </li>
 <li>
     <a href="#">
-        <i class="fa fa-info-circle"></i>
+        <i class="fa fa-info-circle"> </i> &nbsp;
         Informações
     </a>
 </li>
 <li>
-    <a href="#">
-        <i class="fa fa-envelope"></i>
+    <a href="{% url 'courses:announcements' course.slug %}">
+        <i class="fa fa-envelope"> </i> &nbsp;
         Anúncios
     </a>
 </li>
 <li>
     <a href="#">
-        <i class="fa fa-comments"></i>
+        <i class="fa fa-comments"> </i> &nbsp;
         Fórum de Dúvidas
     </a>
 </li>
