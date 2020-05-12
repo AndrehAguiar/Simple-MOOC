@@ -138,6 +138,9 @@ AUTH_USER_MODEL = 'accounts.User'
 
 # Heroku settings
 import dj_database_url
+import django_heroku
+# Activate Django-Heroku.
+django_heroku.settings(locals())
 
 DATABASES['default'] = dj_database_url.config()
 
@@ -154,5 +157,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-import django_heroku
 
