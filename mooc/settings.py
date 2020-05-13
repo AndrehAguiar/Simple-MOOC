@@ -25,6 +25,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!-+st@+m#tkiq%tqgrc@zxfyjw@ku+g6+yt@_h8)o$v_9dm$p7'
 
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -119,6 +122,13 @@ DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+STATIC_ROOT = 'staticfiles'
+
+"""# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = [
+    os.path.join('staticfiles'),
+]"""
+
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mooc', 'media')
@@ -141,16 +151,6 @@ LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'core:home'
 LOGOUT_URL = 'accounts:logout'
 AUTH_USER_MODEL = 'accounts.User'
-
-# Allow all host headers
-ALLOWED_HOSTS = ['*']
-
-STATIC_ROOT = 'staticfiles'
-
-# Extra places for collectstatic to find static files.
-"""STATICFILES_DIRS = [
-    os.path.join('staticfiles'),
-]"""
 
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
