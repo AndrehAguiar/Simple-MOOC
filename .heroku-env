@@ -1,1 +1,0 @@
-PYTHONPATH=/app/.heroku/python/lib/python3.7/site-packages:/app/.heroku/miniconda/envs/condaenv/lib/python3.7/site-packages:$PYTHONPATH
