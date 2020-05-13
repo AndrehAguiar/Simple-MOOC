@@ -148,7 +148,7 @@ STATICFILES_DIRS = [
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mooc', 'media')
 MEDIA_URL = '/media/'
