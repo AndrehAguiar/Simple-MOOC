@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
 ]
 MIDDLEWARE_CLASSES = (
-    'django.middleware.security.SecurityMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -165,9 +165,9 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = [
+"""STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-]
+]"""
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
