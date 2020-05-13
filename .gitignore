@@ -6,4 +6,4 @@
 *.dump
 *.md
 /mooc/local_settings.py
-/mooc/core/staticfiles
+/mooc/staticfiles/

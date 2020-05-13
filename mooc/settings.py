@@ -119,6 +119,8 @@ DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+STATIC_URL = '/static/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mooc', 'media')
 MEDIA_URL = '/media/'
 
@@ -143,13 +145,12 @@ AUTH_USER_MODEL = 'accounts.User'
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'mooc', 'staticfiles')
 
 # Extra places for collectstatic to find static files.
-"""STATICFILES_DIRS = [
+STATICFILES_DIRS = [
     os.path.join('staticfiles'),
-]"""
+]
 
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
