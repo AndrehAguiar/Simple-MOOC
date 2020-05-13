@@ -1,4 +1,9 @@
+*.gitignore
+/.idea/
 /env_mooc/
-/db.sqlite3
+*.sqlite3
 *.pyc
-staticfiles
+*.dump
+*.md
+/mooc/local_settings.py
+/mooc/staticfiles/
