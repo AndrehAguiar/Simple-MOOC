@@ -147,15 +147,15 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-"""STATICFILES_DIRS = [
+STATICFILES_DIRS = [
     os.path.join('staticfiles'),
-]"""
+]
 
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
 
 try:
     from mooc.local_settings import *
