@@ -145,7 +145,7 @@ AUTH_USER_MODEL = 'accounts.User'
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = 'staticfiles'
 
 # Extra places for collectstatic to find static files.
 """STATICFILES_DIRS = [
