@@ -18,10 +18,6 @@ import django_heroku
 from django.conf.global_settings import DATABASES
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-# This is new:
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -30,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '!-+st@+m#tkiq%tqgrc@zxfyjw@ku+g6+yt@_h8)o$v_9dm$p7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver']
+TEMPLATE_DEBUG = False
 
 # Application definition
 
@@ -118,24 +114,10 @@ USE_L10N = True
 USE_TZ = True
 
 # Change 'default' database configuration with $DATABASE_URL.
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+DATABASES['default'] = dj_database_url.config()
 DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mooc', 'media')
 MEDIA_URL = '/media/'
@@ -169,9 +151,13 @@ STATICFILES_DIRS = [
     os.path.join('staticfiles'),
 ]
 
-# Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+try:
+    from mooc.local_settings import *
+except ImportError:
+    pass
