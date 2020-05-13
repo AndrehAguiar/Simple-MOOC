@@ -145,12 +145,12 @@ AUTH_USER_MODEL = 'accounts.User'
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'mooc', 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = [
+"""STATICFILES_DIRS = [
     os.path.join('staticfiles'),
-]
+]"""
 
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
