@@ -62,7 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 )
 
 TEMPLATES = [
@@ -122,15 +122,6 @@ DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-STATIC_ROOT = 'staticfiles'
-
-"""# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = [
-    os.path.join('staticfiles'),
-]"""
-
-STATIC_URL = '/static/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mooc', 'media')
 MEDIA_URL = '/media/'
 
@@ -152,8 +143,17 @@ LOGIN_REDIRECT_URL = 'core:home'
 LOGOUT_URL = 'accounts:logout'
 AUTH_USER_MODEL = 'accounts.User'
 
+STATIC_ROOT = 'staticfiles'
+
+"""# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = [
+    os.path.join('staticfiles'),
+]"""
+
+STATIC_URL = '/static/'
+
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.
 # django_heroku.settings(locals())
