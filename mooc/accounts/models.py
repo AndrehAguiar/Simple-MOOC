@@ -61,6 +61,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'Usuários'
 
 
+class PasswordResetManager(models.Manager):
+    def search(self, query):
+        return self.get_queryset().filter(
+            models.Q(user__icontains=query)
+        )
+
+
 class PasswordReset(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -79,6 +86,8 @@ class PasswordReset(models.Model):
         'Confirmado?',
         default=False,
         blank=True)
+
+    objects = PasswordResetManager()
 
     def __str__(self):
         return '{0} em {1}'.format(

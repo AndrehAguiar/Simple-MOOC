@@ -36,6 +36,7 @@ TEMPLATE_DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,19 +44,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Whitenoise Apps
     'whitenoise.runserver_nostatic',
 
+    # Libs Django
+    'taggit',
+
+    # Custom Apps
     'mooc.core',
     'mooc.courses',
     'mooc.accounts',
+    'mooc.forum',
 ]
 
 MIDDLEWARE = [
+    # instancias de controle entre camadas
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
 MIDDLEWARE_CLASSES = (
+    # Classes de controle de camadas
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -81,8 +90,9 @@ TEMPLATES = [
     },
 ]
 
+# Define a pasta de controle das URLs
 ROOT_URLCONF = 'mooc.urls'
-
+# Configura o tipo de aplicação (WEB)
 WSGI_APPLICATION = 'mooc.wsgi.application'
 
 # Password validation
@@ -122,10 +132,11 @@ DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mooc', 'media')
+# Define a pasta padrão dos arquivos de mídia
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
+# Configura serviço de E-MAIL
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' #<--inválido
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Comentar para uso do SMTP
 DEFAULT_FROM_EMAIL = 'Nome <email@gmail.com>'
@@ -143,14 +154,14 @@ LOGIN_REDIRECT_URL = 'core:home'
 LOGOUT_URL = 'accounts:logout'
 AUTH_USER_MODEL = 'accounts.User'
 
+# Define a pasta de arquivos estáticos
 STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = [
     os.path.join('staticfiles'),
 ]
-
-STATIC_URL = '/static/'
 
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
@@ -158,6 +169,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+# Verifica se está no ambiente de testes (LOCAL) ou produção (HEROKU)
 try:
     from mooc.local_settings import *
 except ImportError:

@@ -14,8 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path, re_path
-from mooc.courses.views import index, details, enrollment, undo_enrollment, announcements, show_announcement, lessons, \
-    lesson, material
+from mooc.courses.views import index, details, enrollment, undo_enrollment, announcements, show_announcement, lessons, lesson, material
 
 app_name = 'courses'
 urlpatterns = [

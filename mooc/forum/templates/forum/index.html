@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+        <ul class="breadcrumb">
+            <li><a href="{% url 'core:home' %}">Início</a> </li>
+            <li>/</li>
+            <li><a href="{% url 'forum:index' %}">Fórum de Discussões</a> </li>
+        </ul>
+    </div>
+    <div class="pure-u-1-3">
+        <div class="pure-menu pure-menu-open">
+            <ul>
+                <li class="pure-menu-heading">
+                    Tópicos do Fórum
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-refresh"> </i> &nbsp;
+                        Mais Recentes
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-eye"> </i> &nbsp;
+                        Mais Visualizados
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-comments-o"> </i> &nbsp;
+                        Mais Comentados
+                    </a>
+                </li>
+                <li class="pure-menu-heading">Tags</li>
+                <li>
+                    <a href="#" class="tags">
+                        <i class="fa fa-tag"> </i> &nbsp;
+                        Python
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="tags">
+                        <i class="fa fa-tag"> </i> &nbsp;
+                        Django
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="tags">
+                        <i class="fa fa-tag"> </i> &nbsp;
+                        Deploy
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-2-3">
+        <div class="inner">
+            {% for thread in object_list %}
+            <div class="well">
+                <h3>
+                    <a href="" title="">{{ thread.title }}</a>
+                </h3>
+                <p>
+                    {{ thread.body|truncatewords:'50'}}
+                </p>
+                <small>
+                    <p>
+                        <i class="fa fa-tags"> </i>
+                        Tags:
+                        {% for tag in thread.tags.all %}
+                        <a href="" title=""> {{ tag }}</a>
+                        {% if not forloop.last %} / {% endif %}
+                        {% endfor %}
+                        <a class="fright" href="" title="">
+                            Atualizado há {{ thread.update_at|timesince }}
+                        </a>
+                    </p>
+                    <hr />
+                    <h5 class="text-right">
+                        Criado por {{ thread.author }} | {{ thread.answers }}
+                        resposta{{ thread.answers|pluralize }} | {{ thread.views }}
+                        Visualizaç{{ thread.views|pluralize:"ão,ões" }}
+                    </h5>
+                </small>
+            </div>
+            {% endfor %}
+            <ul class="pagination pagination-centered">
+                <li>
+                    <a href="?page=1" title="">1</a>
+                </li>
+                <li>
+                    <a href="?page=1" title="">2</a>
+                </li>
+                <li>
+                    <a href="?page=1" title="">3</a>
+                </li>
+                <li>
+                    <a href="?page=1" title="">4</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
