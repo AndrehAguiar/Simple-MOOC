@@ -7,7 +7,3 @@
 *.md
 /mooc/local_settings.py
 /mooc/staticfiles/
-/mooc/%/migrations/
-/mooc/accounts/migrations/
-/mooc/courses/migrations/
-/mooc/forum/migrations/
