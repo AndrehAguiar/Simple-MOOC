@@ -29,9 +29,10 @@ SECRET_KEY = '!-+st@+m#tkiq%tqgrc@zxfyjw@ku+g6+yt@_h8)o$v_9dm$p7'
 ALLOWED_HOSTS = ['*']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
 
-# TEMPLATE_DEBUG = False
+DEBUG = True
+
+TEMPLATE_DEBUG = True
 
 # Application definition
 
@@ -84,7 +85,7 @@ TEMPLATES = [
                 # TODO
                 # Testar sem 'context_processors.debug' na produção
                 # Inclur no local settings
-                # 'django.template.context_processors.debug',
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
