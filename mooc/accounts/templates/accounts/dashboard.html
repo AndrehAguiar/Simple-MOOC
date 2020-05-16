@@ -1,13 +1,7 @@
 {% extends 'base.html' %}
-
 {% load courses_tags %}
-
-
 {% block content %}
-
-
 {% load_my_courses user as enrollments %}
-
 <div class="pure-g-r content-ribbon">
 	<div class="pure-u-1">
 		<ul class="breadcrumb">
@@ -64,7 +58,6 @@
 	<div class="pure-u-2-3">
 		<div class="inner">
 			{% block dashboard_content %}
-				<h2>Meus Cursos</h2>
 				{% for enrollment in enrollments %}
 					<div class="well">
 						<h3>{{ enrollment.course }}
@@ -73,7 +66,7 @@
 						{{ enrollment.course.about|linebreaks }}
 						<div class="pure-controls">
 							<hr>
-							<a href="{% url 'courses:announcements' enrollment.course.slug %}" class="pure-button pure-button-primary">Acessar</a>
+							<a href="{% url 'courses:announcements' enrollment.course.slug %}" class="pure-button pure-button-primary fright">Acessar</a>
 							<a href="{% url 'courses:undo_enrollment' enrollment.course.slug %}" class="pure-button button-error">Cancelar</a>
 						</div>
 					</div>

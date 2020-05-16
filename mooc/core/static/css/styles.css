@@ -272,8 +272,14 @@ aside a, aside a:visited {
     padding: 0em 1em 1em 1em;
     margin-bottom: 1.5em;
 }
+.fleft {
+    float: left;
+}
 .fright {
     float: right;
+}
+.label-success{
+    color: rgb(28, 184, 65);
 }
 .pure-menu li a.tags {
     display: inline-block;
@@ -363,4 +369,7 @@ aside a, aside a:visited {
 }
 .text-left {
   text-align: left;
+}
+.hidden{
+  display:none
 }

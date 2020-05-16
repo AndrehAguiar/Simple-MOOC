@@ -135,7 +135,10 @@ class Lesson(models.Model):
 class MaterialManager(models.Manager):
     def search(self, query):
         return self.get_queryset().filter(
-            models.Q(name__icontains=query) | models.Q(course__icontains=query) |models.Q(lesson__icontains=query) | models.Q(file__icontains=query)
+            models.Q(name__icontains=query) | \
+            models.Q(course__icontains=query) | \
+            models.Q(lesson__icontains=query) | \
+            models.Q(file__icontains=query)
         )
 
 
@@ -163,16 +166,16 @@ class Material(models.Model):
         blank=True
     )
 
+    file = models.FileField(
+        upload_to='',
+        blank=True,
+        null=True
+    )
+
     objects = MaterialManager()
 
     def is_embedded(self):
         return bool(self.embedded)
-
-    file = models.FileField(
-        upload_to='lessons/material',
-        blank=True,
-        null=True
-    )
 
     def __str__(self):
         material_curso = self.course.name + ' / ' + self.lesson.name + ' / ' + self.name
@@ -186,7 +189,9 @@ class Material(models.Model):
 class EnrollmentManager(models.Manager):
     def search(self, query):
         return self.get_queryset().filter(
-            models.Q(user__icontains=query) | models.Q(course__icontains=query) | models.Q(slug__icontains=query)
+            models.Q(user__icontains=query) | \
+            models.Q(course__icontains=query) | \
+            models.Q(slug__icontains=query)
         )
 
 

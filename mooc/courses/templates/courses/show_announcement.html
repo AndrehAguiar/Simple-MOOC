@@ -11,20 +11,22 @@
 <div class="well">
     <h2>{{ announcement.title }}</h2>
     {{ announcement.content|linebreaks }}
+    <small>Aununciado por: {{ announcement.user }} há {{ announcement.created_at|timesince}}</small>
+    <a class="pure-button pure-button-primary fright" type="button"
+       href="{% url 'courses:show_announcement' course.slug announcement.pk %}#comments">
+        Comentar
+    </a>
+    <br />
 </div>
 <div class="well">
     <h4 id="'comments">
         Comentários
-        <a class="pure-button pure-button-primary button-right" type="button"
-           href="{% url 'courses:show_announcement' course.slug announcement.pk %}#comments">
-            Comentar
-        </a>
     </h4>
     <hr/>
     {% for comment in announcement.comments.all %}
     <p>
         <strong>{{ comment.user }}</strong> disse há {{ comment.created_at|timesince }} atrás:
-        <br/>
+        <br/><br/>
         {{ comment.comment|linebreaksbr }}
     </p>
     <hr/>
@@ -33,6 +35,9 @@
         <h2>Nenhum comentário para este anúncio</h2>
     </div>
     {% endfor %}
+    <!--TODO
+    Ocultar para ser visualizado quando clicar no botão
+    ---------------------------------------------------->
     <form method="post" class="pure-form pure-form-stacked" id="add_comment">
         {% csrf_token %}
         <fieldset>

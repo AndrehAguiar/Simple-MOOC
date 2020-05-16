@@ -16,8 +16,9 @@
         Aulas e Materiais
     </a>
 </li>
+
 <li>
-    <a href="#">
+    <a href="{% url 'courses:details' course.slug %}">
         <i class="fa fa-info-circle"> </i> &nbsp;
         Informações
     </a>
@@ -28,6 +29,9 @@
         Anúncios
     </a>
 </li>
+<!--TODO
+Implementar fórum de dúvidas dos cursos
+-------------------------------->
 <li>
     <a href="#">
         <i class="fa fa-comments"> </i> &nbsp;

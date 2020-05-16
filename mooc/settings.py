@@ -15,7 +15,7 @@ import dj_database_url
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from django.conf.global_settings import DATABASES
+from django.conf.global_settings import DATABASES as DB
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -81,7 +81,11 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                # TODO
+                # Testar sem 'context_processors.debug' na produção
+                # Inclur no local settings
                 'django.template.context_processors.debug',
+                'django.template.context_processors.request',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -127,8 +131,8 @@ USE_L10N = True
 USE_TZ = True
 
 # Change 'default' database configuration with $DATABASE_URL.
-DATABASES['default'] = dj_database_url.config()
-DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
+DB['default'] = dj_database_url.config()
+DB['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
