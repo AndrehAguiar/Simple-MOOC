@@ -84,7 +84,7 @@ TEMPLATES = [
                 # TODO
                 # Testar sem 'context_processors.debug' na produção
                 # Inclur no local settings
-                # 'django.template.context_processors.debug',
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
