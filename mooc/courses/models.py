@@ -166,13 +166,13 @@ class Material(models.Model):
         blank=True
     )
 
+    objects = MaterialManager()
+
     file = models.FileField(
-        upload_to='',
+        upload_to='lessons/material',
         blank=True,
         null=True
     )
-
-    objects = MaterialManager()
 
     def is_embedded(self):
         return bool(self.embedded)
