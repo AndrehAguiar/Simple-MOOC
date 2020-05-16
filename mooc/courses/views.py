@@ -175,13 +175,14 @@ def material(request, slug, pk):
     material = get_object_or_404(
         Material,
         pk=pk,
-        lesson__course=course
+        lesson__course=course,
     )
     lesson = material.lesson
     if not request.user.is_staff and not lesson.is_available():
         messages.error('Este material ainda não está disponível')
         return redirect('courses:lessons', slug=course.slug, pk=lesson.pk)
     if not material.is_embedded():
+        material.file.url = course.slug
         return redirect(material.file.url)
     template = 'courses/material.html'
     context = {
