@@ -15,7 +15,7 @@ import dj_database_url
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from django.conf.global_settings import DATABASES as DB
+from django.conf.global_settings import DATABASES
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -132,8 +132,8 @@ USE_L10N = True
 USE_TZ = True
 
 # Change 'default' database configuration with $DATABASE_URL.
-DB['default'] = dj_database_url.config()
-DB['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
+DATABASES['default'] = dj_database_url.config()
+DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
