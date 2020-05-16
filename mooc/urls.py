@@ -20,6 +20,7 @@ from django.urls import path, include
 from mooc.accounts import urls as accounts_urls
 from mooc.core import urls as core_urls
 from mooc.courses import urls as courses_urls
+from mooc.forum import urls as forum_urls
 
 urlpatterns = [
     path(r'',
@@ -36,6 +37,11 @@ urlpatterns = [
          include(
              (accounts_urls, 'accounts'),
              namespace='accounts')
+         ),
+    path(r'forum/',
+         include(
+             (forum_urls, 'forum'),
+             namespace='forum')
          ),
     path(r'admin/',
          admin.site.urls),

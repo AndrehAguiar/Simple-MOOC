@@ -1,4 +1,5 @@
 # Create your models here.
+from django.dispatch.dispatcher import receiver
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.conf import settings
@@ -10,6 +11,7 @@ from mooc.core.mail import send_mail_template
 class CourseManager(models.Manager):
     def search(self, query):
         return self.get_queryset().filter(
+            models.Q(id__icontains=query) | \
             models.Q(name__icontains=query) | \
             models.Q(description__icontains=query) | \
             models.Q(slug__icontains=query)
@@ -69,6 +71,16 @@ class Course(models.Model):
         ordering = ['name']
 
 
+class LessonManager(models.Manager):
+    def search(self, query):
+        return self.get_queryset().filter(
+            models.Q(course__icontains=query) | \
+            models.Q(name__icontains=query) | \
+            models.Q(description__icontains=query) | \
+            models.Q(number__icontains=query)
+        )
+
+
 class Lesson(models.Model):
     # Conecta a aula a um curso específico pelo ForeignKey
     course = models.ForeignKey(
@@ -103,6 +115,7 @@ class Lesson(models.Model):
         'Atualizado em',
         auto_now=True
     )
+    objects = LessonManager()
 
     def __str__(self):
         return self.name
@@ -119,19 +132,29 @@ class Lesson(models.Model):
         ordering = ['number']
 
 
+class MaterialManager(models.Manager):
+    def search(self, query):
+        return self.get_queryset().filter(
+            models.Q(name__icontains=query) | \
+            models.Q(course__icontains=query) | \
+            models.Q(lesson__icontains=query) | \
+            models.Q(file__icontains=query)
+        )
+
+
 class Material(models.Model):
     # Conecta o material a uma aula específica pelo ForeignKey
     course = models.ForeignKey(
         Course,
         verbose_name='Curso',
-        related_name='aula',
+        related_name='material',
         on_delete=models.CASCADE
     )
     # Conecta o material a uma aula específica pelo ForeignKey
     lesson = models.ForeignKey(
         Lesson,
         verbose_name='Aula',
-        related_name='materiais',
+        related_name='material',
         on_delete=models.CASCADE
     )
     name = models.CharField(
@@ -142,11 +165,14 @@ class Material(models.Model):
         'Vídeo embedded',
         blank=True
     )
+
     file = models.FileField(
-        upload_to='lesson/materials',
+        upload_to='',
         blank=True,
         null=True
     )
+
+    objects = MaterialManager()
 
     def is_embedded(self):
         return bool(self.embedded)
@@ -158,6 +184,15 @@ class Material(models.Model):
     class Meta:
         verbose_name = 'Material'
         verbose_name_plural = 'Materiais'
+
+
+class EnrollmentManager(models.Manager):
+    def search(self, query):
+        return self.get_queryset().filter(
+            models.Q(user__icontains=query) | \
+            models.Q(course__icontains=query) | \
+            models.Q(slug__icontains=query)
+        )
 
 
 class Enrollment(models.Model):
@@ -195,6 +230,8 @@ class Enrollment(models.Model):
         auto_now=True
     )
 
+    objects = EnrollmentManager()
+
     def active(self):
         self.status = 1
         self.save()
@@ -215,9 +252,7 @@ class Enrollment(models.Model):
 class AnnouncementManager(models.Manager):
     def search(self, query):
         return self.get_queryset().filter(
-            models.Q(name__icontains=query) | \
-            models.Q(description__icontains=query) | \
-            models.Q(slug__icontains=query)
+            models.Q(user__icontains=query) | models.Q(course__icontains=query) | models.Q(tilte__icontains=query)
         )
 
 
@@ -251,6 +286,7 @@ class Announcement(models.Model):
         'Atualizado em',
         auto_now=True
     )
+
     objects = AnnouncementManager()
 
     def __str__(self):
@@ -260,6 +296,39 @@ class Announcement(models.Model):
         verbose_name = 'Anúncio'
         verbose_name_plural = 'Anúncios'
         ordering = ['-created_at']
+
+
+@receiver(models.signals.post_save, sender=Announcement)
+def post_save_announcement(instance, created, **kwargs):
+    if created:
+        subject = instance.title
+        context = {
+            'announcement': instance
+        }
+        template_name = 'courses/announcement_mail.html'
+        enrollments = Enrollment.objects.filter(
+            course=instance.course,
+            status=1
+        )
+        for enrollment in enrollments:
+            recipient_list = [enrollment.user.email]
+            send_mail_template(subject, template_name, context, recipient_list)
+
+
+models.signals.post_save.connect(
+    post_save_announcement,
+    sender=Announcement,
+    dispatch_uid='post_save_announcement'
+)
+
+
+class CommentManager(models.Manager):
+    def search(self, query):
+        return self.get_queryset().filter(
+            models.Q(course__icontains=query) | \
+            models.Q(announcement__icontains=query) | \
+            models.Q(comment__icontains=query)
+        )
 
 
 class Comment(models.Model):
@@ -289,6 +358,8 @@ class Comment(models.Model):
         auto_now=True
     )
 
+    objects = CommentManager()
+
     def __str__(self):
         comentado = self.announcement.course.name + ' / ' + self.announcement.title + ' / ' + self.user.name
         return comentado
@@ -297,26 +368,3 @@ class Comment(models.Model):
         verbose_name = 'Comentário'
         verbose_name_plural = 'Comentários'
         ordering = ['created_at']
-
-
-def post_save_announcement(instance, created, **kwargs):
-    if created:
-        subject = instance.title
-        context = {
-            'announcement': instance
-        }
-        template_name = 'courses/announcement_mail.html'
-        enrollments = Enrollment.objects.filter(
-            course=instance.course,
-            status=1
-        )
-        for enrollment in enrollments:
-            recipient_list = [enrollment.user.email]
-            send_mail_template(subject, template_name, context, recipient_list)
-
-
-models.signals.post_save.connect(
-    post_save_announcement,
-    sender=Announcement,
-    dispatch_uid='post_save_announcement'
-)

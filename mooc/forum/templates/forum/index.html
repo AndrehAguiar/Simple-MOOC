@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+        <ul class="breadcrumb">
+            {% block breadcrumb %}
+            <li><a href="{% url 'core:home' %}">Início</a></li>
+            <li>/</li>
+            <li><a href="{% url 'forum:index' %}">Fórum de Discussões</a></li>
+            {% endblock %}
+        </ul>
+    </div>
+    <div class="pure-u-1-3">
+        <div class="pure-menu pure-menu-open">
+            <ul class="side-menu">
+                {% block side-menu %}
+                <li class="pure-menu-heading">
+                    Tópicos do Fórum
+                </li>
+                <li>
+                    <a href="?order=-created_at">
+                        <i class="fa fa-refresh"> </i> &nbsp;
+                        Mais Recentes
+                    </a>
+                </li>
+                <li>
+                    <a href="?order=-views">
+                        <i class="fa fa-eye"> </i> &nbsp;
+                        Mais Visualizados
+                    </a>
+                </li>
+                <li>
+                    <a href="?order=-answers">
+                        <i class="fa fa-comments-o"> </i> &nbsp;
+                        Mais Comentados
+                    </a>
+                </li>
+                <li class="pure-menu-heading">
+                    <hr/>
+                    Tags
+                </li>
+                {% endblock %}
+                <li>
+                    <small>
+                        {% for tag in tags %}
+                        <a href="{% url 'forum:index_tagged' tag.slug %}" class="tags">
+                            <i class="fa fa-tag"> </i> &nbsp;
+                            {{ tag }}
+                        </a>
+                        {% endfor %}
+                    </small>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-2-3">
+        <div class="inner">
+            {% for thread in object_list %}
+            <div class="well">
+                <h3>
+                    <a href="{{ thread.get_absolute_url }}/" title="">{{ thread.title }}</a>
+                </h3>
+                <p>
+                    {{ thread.body|truncatewords:'50'}}
+                </p>
+                <small>
+                    <p>
+                        <i class="fa fa-tags"> </i>
+                        Tags:
+                        {% for tag in thread.tags.all %}
+                        <a href="{% url 'forum:index_tagged' tag.slug %}" title=""> {{ tag }}</a>
+                        {% if not forloop.last %} / {% endif %}
+                        {% endfor %}
+                    </p>
+                </small>
+                <hr/>
+                <a class="pure-button pure-button-primary fleft" href="{{ thread.get_absolute_url }}/">Ver</a>
+                <small>
+                    <h5 class="text-right">
+                        <a class="text-right" href="{{ thread.get_absolute_url }}/" title="">
+                            Atualizado há {{ thread.update_at|timesince }}
+                        </a><br/>
+                        Criado por {{ thread.author }} | {{ thread.answers }}
+                        resposta{{ thread.answers|pluralize }} | {{ thread.views }}
+                        Visualizaç{{ thread.views|pluralize:"ão,ões" }}
+                    </h5>
+                </small>
+            </div>
+            {% empty %}
+            <div class="inner">
+                Nenhum tópico postado ainda.
+            </div>
+            {% endfor %}
+            {% if paginator.count > 0 %}
+            <ul class="pagination pagination-centered">
+                {% if page_obj.has_previous %}
+                <li>
+                    <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.order %}&order={{ request.GET.order }}{% endif %}"
+                       title="">
+                        Anterior
+                    </a>
+                </li>
+                {% endif %}
+                {% for page in paginator.page_range %}
+                <li {% if page == page_obj.number %} class="active" {% endif %}>
+                    <a href="?page={{ page }}{% if request.GET.order %}&order={{ request.GET.order }}{% endif %}"
+                       title="">{{ page }}</a>
+                </li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li>
+                    <a href="?page={{ page_obj.next_page_number }}{% if request.GET.order %}&order={{ request.GET.order }}{% endif %}"
+                       title="">
+                        Próxima
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

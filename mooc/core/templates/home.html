@@ -1,16 +1,19 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 	<div class="splash">
 	    <div class="pure-g-r">
 	        <div class="pure-u-1">
 	            <div class="l-box splash-text">
 	                <h1 class="splash-head">
-	                    Uma Simples Plataforma de Ensino a Distância
+	                    Uma Simples Plataforma de Ensino à Distância
 	                </h1>
 	                <h2 class="splash-subhead">
 	                    O Simple MOOC visa simplificar o ensino a distância, provendo ferramentas objetivas e de fácil uso para cursos a distância.
 	                </h2>
+					<!-- TODO
+					Implementar página de detalhes da plataforma
+					------------------------------------------->
 	                <p>
 	                    <a href="#" class="pure-button primary-button">Saiba mais</a>
 	                </p>
@@ -31,7 +34,7 @@
 	        </div>
 	        <div class="pure-u-1-3">
 	            <div class="l-box">
-	                <img src="http://placehold.it/400x250"
+	                <img src="{% static 'img/curso-online.jpg' %}"
 	                     alt="Vídeo aulas e materiais digitais.">
 	            </div>
 	        </div>
@@ -39,7 +42,7 @@
 	    <div class="pure-g-r content-ribbon">
 	        <div class="pure-u-1-3">
 	            <div class="l-box">
-	                <img src="http://placehold.it/400x250"
+	                <img src="{% static 'img/forum-duvidas.jpg' %}"
 	                     alt="Fórum de Dúvidas">
 	            </div>
 	        </div>
@@ -65,7 +68,7 @@
 	        </div>
 	        <div class="pure-u-1-3">
 	            <div class="l-box">
-	                <img src="http://placehold.it/400x250"
+	                <img src="{% static 'img/exercicio-cursos.jpg' %}"
 	                     alt="Exercícios">
 	            </div>
 	        </div>
@@ -73,7 +76,7 @@
 	    <div class="pure-g-r content-ribbon">
 	        <div class="pure-u-1-3">
 	            <div class="l-box">
-	                <img src="http://placehold.it/400x250"
+	                <img src="{% static 'img/avisos-alunos.jpg' %}"
 	                     alt="Mural de Avisos">
 	            </div>
 	        </div>

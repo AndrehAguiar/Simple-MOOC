@@ -1,9 +1,13 @@
 *.gitignore
 /.idea/
 /env_mooc/
-*.sqlite3
+/mooc/db.sqlite3
 *.pyc
 *.dump
 *.md
 /mooc/local_settings.py
 /mooc/staticfiles/
+/mooc/%/migrations/
+/mooc/accounts/migrations/
+/mooc/courses/migrations/
+/mooc/forum/migrations/

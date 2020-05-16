@@ -17,7 +17,7 @@
             Comentário{{ comments_count|pluralize }}
             {% endwith %}
         </a>
-        <a class="pure-button pure-button-primary button-right" type="button" href="{% url 'courses:show_announcement' course.slug announcement.pk %}#comments">
+        <a class="pure-button pure-button-primary button-right" href="{% url 'courses:show_announcement' course.slug announcement.pk %}#comments">
             Comentar
         </a>
     </p>

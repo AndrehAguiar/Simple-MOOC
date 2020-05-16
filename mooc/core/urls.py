@@ -17,6 +17,11 @@ from django.urls import path, re_path
 from mooc.core.views import home, contact
 
 urlpatterns = [
-    path('', home, name='home'),
-    re_path(r'^contato/$', contact, name='contact'),
+    path('', home,
+         name='home'
+         ),
+    re_path(r'^contato/$',
+            contact,
+            name='contact'
+            )
 ]
