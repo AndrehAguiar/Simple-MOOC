@@ -1,3 +1,4 @@
+[Clique aqui e confira publicação no heroku](https://top-simplemooc.herokuapp.com/)
 # Python 3 na Web com Django (Básico e Intermediário)
 <b>Como desenvolver incríveis aplicações web de forma rápida</b>
 
