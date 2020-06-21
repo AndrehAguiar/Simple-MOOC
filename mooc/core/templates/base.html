@@ -27,7 +27,7 @@
             {% if user.is_authenticated %}
             <li><a href="{% url 'accounts:dashboard' %}">Painel</a></li>
             {% if user.is_staff %}
-            <li><a href="{% url 'core:home' %}./admin">Administrar</a></li>
+            <li><a href="{% url 'core:home' %}./admin/">Administrar</a></li>
             {% endif %}
             <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
             {% else %}
