@@ -1,34 +1,6 @@
-[Clique aqui e confira publicação no heroku](https://top-simplemooc.herokuapp.com/)
-# Python 3 na Web com Django (Básico e Intermediário)
-<b>Como desenvolver incríveis aplicações web de forma rápida</b>
+<div class="view-more-container--view-more--25_En"><div style=""><div><div class="course-overview--container--2OKKD" data-purpose="dashboard-overview-container"><div class="course-overview--heading--290FL" data-purpose="course-headline"><div class="font-heading-lg mb-space-sm">About this course</div><p>Como desenvolver incríveis aplicações web de forma rápida</p></div><div class="course-overview--grid-row--1nKqQ"><div>By the numbers</div><div data-purpose="course-main-stats"><div>Skill level: Intermediate Level</div><div>Students: 349665</div><div>Languages: Portuguese</div><div>Captions: Yes</div></div><div data-purpose="course-additional-stats"><div>Lectures: 89</div><div>Video: 16 total hours</div></div></div><div class="course-overview--grid-row--1nKqQ course-overview--course-features--2fF12" data-purpose="course-features"><div>Features</div><div class="course-overview--wide--37Lev"><span>Available on <a href="https://udemy.app.link/Ur80Aa0vf9" target="_blank" rel="noopener noreferrer">iOS</a> and <a href="https://udemy.app.link/Ur80Aa0vf9" target="_blank" rel="noopener noreferrer">Android</a></span></div></div><div class="course-overview--grid-row--1nKqQ"><div>Description</div><div class="course-overview--wide--37Lev course-overview--description--2m1iq" data-purpose="course-description"><div data-purpose="safely-set-inner-html:trusted-html:content"><p>No curso iremos desenvolver uma aplicação chamada Simple MOOC, que é uma plataforma de ensino a distância, vamos desde a criação do projeto, definição das interfaces e arquitetura do projeto até o deploy da aplicação na nuvem.</p><p>Este curso é a versão gratuita de um curso anterior meu, enquanto eu planejo e gravo as aulas do próximo curso.</p><p>Espero que aproveitem o máximo o curso e me ajudem a melhorá-lo.</p></div><h4>What you’ll learn</h4><ul><li>Desenvolver suas próprias aplicações web com Python 3 e Django</li><li>Ter noção de como planejar o desenvolvimento de uma aplicação web</li><li>Entendimento do funcionamento de uma aplicação web com Python</li></ul><h4>Are there any course requirements or prerequisites?</h4><ul><li>Ter noção de programação em geral</li><li>Saber o básico do funcionamento da Web (html, css e javascript)</li><li>Conhecer o básico de Python (sintaxe, classes...)</li><li>Familiaridade com Terminal (Linux/Mac) ou Prompt de Comando (Windows)</li></ul><h4>Who this course is for:</h4><ul><li>Quem desejar desenvolver aplicações web de forma rápida</li><li>Aprender a arquitetura de aplicações web com Python</li><li>O curso não ensina html, css ou javascript, mas todo o código do layout da aplicação é disponibilizado</li></ul></div></div><div class="course-overview--grid-row--1nKqQ"><div>Instructor</div><div class="course-overview--wide--37Lev"><div class="instructor-profile--header-row--n0Prm"><img alt="User photo" aria-label="User photo" class="user-avatar user-avatar--image" data-purpose="user-avatar" height="64" width="64" src="https://img-a.udemycdn.com/user/200_H/178784_04b3_4.jpg"><div class="instructor-profile--title-wrapper--2V1u6"><div class="instructor-profile--title--1rlDt"><a href="/user/gilenofilho/" data-purpose="instructor-url">Gileno Alves Santa Cruz Filho</a></div><p>Desenvolvedor e Professor</p></div></div><div class="instructor-profile--social-links-row--14uvr"><a href="https://twitter.com/gilenofilho" class="instructor-profile--social-profile-btn--fs2ve" target="_blank" rel="noopener noreferrer nofollow"><span aria-label="Twitter" class="udi udi-twitter"></span></a><a href="https://www.facebook.com/gilenofilho" class="instructor-profile--social-profile-btn--fs2ve" target="_blank" rel="noopener noreferrer nofollow"><span aria-label="Facebook" class="udi udi-facebook"></span></a><a href="https://linkedin.com/in/gilenofilho" class="instructor-profile--social-profile-btn--fs2ve" target="_blank" rel="noopener noreferrer nofollow"><span aria-label="LinkedIn" class="udi udi-linkedin"></span></a><a href="https://www.youtube.com/pycursos" class="instructor-profile--social-profile-btn--fs2ve" target="_blank" rel="noopener noreferrer nofollow"><span aria-label="YouTube" class="udi udi-youtube"></span></a><a href="http://www.gilenofilho.com.br/" class="instructor-profile--social-profile-btn--fs2ve" target="_blank" rel="noopener noreferrer nofollow"><span aria-label="Personal website" class="udi udi-globe"></span></a></div><div class="instructor-profile--description--vCsKv"><div data-purpose="safely-set-inner-html:trusted-html:content"><p>Co-­fundador e instrutor da empresa PyCursos. Sou analista na empresa Dantas Engenharia de Avaliações onde desenvolvo tanto a plataforma web de ensino para cursos de Inferência Estatística aplicada a Avaliação Imobiliária quanto o software científico chamado SAB (Sistema de Avaliação de Bens), voltado para a análise de dados imobiliários utilizando técnicas clássicas de estatísticas e inteligência artificial. </p><p>Trabalho com Python desde 2008, participando ativamente de comunidades de software livre e ensinando Python em diversos cursos, workshops e palestras.</p><p> Tenho interesse em: Desenvolvimento de Software, Python, Análise de Dados, Inteligência Artificial, Engenharia de Avaliações, Design e Minimalismo.</p></div></div></div></div></div></div></div><div class=""><button type="button" class="view-more-container--view-more__collapse-btn--1bVN9 btn btn-link">- See less</button></div></div>
 
-Skill level: Intermediate Level
-
-Features
-Available on iOS and Android
-
-Description
-No curso iremos desenvolver uma aplicação chamada Simple MOOC, que é uma plataforma de ensino a distância, vamos desde &agrave; criação do projeto, definição das interfaces e arquitetura do projeto até o deploy da aplicação na nuvem.
-
-What you’ll learn
-<ol>
-<li>Desenvolver suas próprias aplicações web com Python 3 e Django</li>
-<li>Ter noção de como planejar o desenvolvimento de uma aplicação web</li>
-<li>Entendimento do funcionamento de uma aplicação web com Python</li>
-<li>Are there any course requirements or prerequisites?</li>
-<li>Ter noção de programação em geral</li>
-<li>Saber o básico do funcionamento da Web (html, css e javascript)</li>
-<li>Conhecer o básico de Python (sintaxe, classes...)</li>
-<li>Familiaridade com Terminal (Linux/Mac) ou Prompt de Comando (Windows)</li>
-</ol>
-
-Who this course is for:
-Quem desejar desenvolver aplicações web de forma rápida aprender a arquitetura de aplicações web com Python. O curso não ensina html, css ou javascript, mas todo o código do layout da aplicação é disponibilizado.
-
-Gileno Alves Santa Cruz Filho
-Desenvolvedor e Professor
-
-Saiba mais em: [udemy.com](https://www.udemy.com/course/python-3-na-web-com-django-basico-intermediario)
+Saiba mais em: [udemy.com](https://www.udemy.com/share/101qSeBUUfdFpRRng=/)
 
 Aluno: André Aguiar - Gestor de TI e WEB Developer
 [topartes.com](topartes.com)
